@@ -1,0 +1,26 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    - systemctl stop ssh
+
+  locale: fr_FR
+  keyboard:
+    layout: fr
+  identity:
+    hostname: ubuntu
+    username: vagrant
+    password: hash_password
+
+  ssh:
+    install-server: true
+    allow-pw: yes
+#    authorized-keys:
+#      - ssh-rsa key
+
+  package_upgrade: false
+  package_update: false
+  packages:
+#    - apt-transport-https
+#    - net-tools
+    - open-vm-tools
