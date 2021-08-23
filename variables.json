@@ -1,1 +1,12 @@
-
+{
+"vcenter_server":"vct.land.local",
+"username":"administrator@vsphere.local",
+"password":"pass",
+"datastore":"Datastore",
+"folder": "Template",
+"cluster": "Clu-Land",
+"host":     "fqdn esxi",
+"network": "VM Network",
+"ssh_username":"vagrant",
+"ssh_password":"vagrant"
+}
