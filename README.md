@@ -9,6 +9,7 @@ packer build -var-file=c:\packer\centos\variables.json c:\packer\centos\centos.j
 # Cloud-init
 
  https://cloudinit.readthedocs.io/en/latest/
+ 
  https://ubuntu.com/server/docs/install/autoinstall
  
 # Packer for vsphere-iso
