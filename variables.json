@@ -1,5 +1,5 @@
 {
-"vcenter_server":"vct.land.local",
+"vcenter_server":"fqdn vcenter",
 "username":"administrator@vsphere.local",
 "password":"pass",
 "datastore":"Datastore",
