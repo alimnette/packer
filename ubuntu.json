@@ -1,0 +1,68 @@
+{
+  "builders": [
+    {
+      "vm_name":              "Tpl_Ubuntu_2004-packer-vm",
+      "name":                 "Ubuntu",
+      "folder":               "{{user `folder`}}",
+      "convert_to_template":  "true",
+      "guest_os_type":        "ubuntu64Guest",
+      "CPUs":4,
+      "RAM":1024,
+      "RAM_reserve_all":      true,
+
+      "boot_order":           "disk,cdrom",
+
+      "network_adapters": [
+        {
+          "network":          "{{user `network`}}",
+          "network_card":     "vmxnet3"
+        }
+      ],
+
+      "datastore":            "Gold-DS-1",
+      "disk_controller_type": "pvscsi",
+      "storage": [
+        {
+          "disk_size":        32768,
+          "disk_thin_provisioned": true
+        }
+      ],
+
+      "type":                 "vsphere-iso",
+      "vcenter_server":       "{{user `vcenter_server`}}",
+      "username":             "{{user `username`}}",
+      "password":             "{{user `password`}}",
+      "insecure_connection":  "true",
+
+      "cluster":              "{{user `cluster`}}",
+      "host":                 "{{user `host`}}",
+
+      "ssh_username":         "{{user `ssh_username`}}",
+      "ssh_password":         "{{user `ssh_password`}}",
+      "ssh_timeout":          "20m",
+
+      "iso_paths": [
+                              "[ISO] Linux/ubuntu-20.04.1-live-server-amd64.iso"
+      ],
+
+      "http_directory":       "http",
+      "boot_wait":            "5s",
+      "boot_command": [
+                              "<enter><enter><f6><esc><wait>",
+                              "autoinstall ds=nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/",
+                              "<enter>"
+      ]
+    }
+  ],
+
+  "provisioners": [
+    {
+      "execute_command":      "echo '{{user `ssh_password`}}' | sudo -S -E bash '{{.Path}}'",
+      "scripts": [
+                              "script.sh"
+      ],
+      "type":                 "shell"
+    }
+  ]
+
+}
