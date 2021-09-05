@@ -15,3 +15,6 @@ packer build -var-file=c:\packer\centos\variables.json c:\packer\centos\centos.j
 # Packer for vsphere-iso
 
  https://www.packer.io/docs/builders/vsphere/vsphere-iso
+ 
+ # https://kb.vmware.com/s/article/59687
+touch /etc/cloud/cloud-init.disabled
